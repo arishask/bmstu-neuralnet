@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">На главную</button>
+    </form>
+    {% if tasks_list %}
+        <ul>
+            {% for task in tasks_list %}
+                <li><a href="{% url 'dialog_bot:detail' task.id %}">{{ task.task_name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks are available.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ task.task_name }}{% endblock %}
+{% block content %}
+    <h2>{{ task.task_name }}</h2>
+    <form action="{% url 'dialog_bot:index' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">На главную</button>
+    </form>
+    <hr>
+    {% if latest_predictions %}
+        {% for p in latest_predictions %}
+            <p>
+                <strong>Вы: {{ p.input_data }}</strong>
+                <p>Бот: {{ p.output_data }}</p>
+            </p>
+        {% endfor %}
+    {% else %}
+        Нет предыдущих результатов.
+    {% endif %}
+    </hr>
+    <form action="{% url 'dialog_bot:predict' task.id %}" method="POST">
+        {% csrf_token %}
+        <textarea name="text" required="" placeholder="Введите текст" cols="70" rows="10"></textarea><br>
+        <button type="submit">Отправить сообщение</button>
+    </form>
+{% endblock %}

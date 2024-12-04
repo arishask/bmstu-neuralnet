@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bert_classifier/style.css' %}">
+    <form action="{% url 'index' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">На главную</button>
+    </form>
+    {% if tasks_list %}
+        <ul>
+            {% for task in tasks_list %}
+                <li><a href="{% url 'bert_classifier:detail' task.id %}">{{ task.task_name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks are available.</p>
+    {% endif %}
+{% endblock %}
