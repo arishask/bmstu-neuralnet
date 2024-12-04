@@ -4,7 +4,7 @@
 
 {% block content %}
     <h2>{{task.task_name}}</h2>
-    <form action="{% url 'index' %}" method="POST">
+    <form action="{% url 'bert_classifier:index' %}" method="POST">
         {% csrf_token %}
         <button type="submit">На главную</button>
     </form>

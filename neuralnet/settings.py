@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bert_classifier.apps.BertClassifierConfig',
     'dialog_bot.apps.DialogBotConfig',
+    'image_classification.apps.ImageClassificationConfig',
 ]
 
 MIDDLEWARE = [

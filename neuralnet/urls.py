@@ -20,7 +20,8 @@ from neuralnet import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
     path('bert_classifier/', include('bert_classifier.urls')),
     path('dialog_bot/', include('dialog_bot.urls')),
-    path('', views.index, name='index'),
+    path('image_classification/', include('image_classification.urls')),
 ]
