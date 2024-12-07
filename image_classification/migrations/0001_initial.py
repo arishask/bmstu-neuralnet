@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name='Image',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='images')),
+                ('image', models.ImageField(upload_to='media')),
                 ('image_class', models.CharField(max_length=100)),
                 ('task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bert_classifier.task')),
             ],
